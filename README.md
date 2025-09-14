@@ -4,7 +4,7 @@
 </h1>
 
 <p align="center">
-   Blockchain solution for sharing customer KYC information, using Hyperledger Fabric, Node.js and ReactJS. Presented as final assingment for BCDV1012 - dApp I from <a href='https://www.georgebrown.ca/programs/blockchain-development-program-t175/'>Blockchain Development</a> program from <a href='https://www.georgebrown.ca'>George Brown College</a>.
+   Advanced identity verification solution using Hyperledger Indy for decentralized digital identity management, KYC compliance, and secure credential sharing. Features DID-based authentication, verifiable credentials, biometric verification support, and location-based validation with extensibility for government entity integration.
 </p>
 
 <p align="center">
@@ -29,36 +29,37 @@
 
 ## :runner: How to run
 
-This project was developed using a [Google Cloud Platform](https://cloud.google.com/) virtual machine, so every step must be performed in a VM CLI under a _sudo -s_ command.
+This eKYC application now uses **Hyperledger Indy** for decentralized identity management and verification. The system provides DID-based authentication, verifiable credentials, and supports biometric and location-based validation.
 
-Start your VM and save the highlighted External IP:
+### Prerequisites
 
-<p align="center">
-   <img src="https://res.cloudinary.com/lorransutter/image/upload/v1594076924/eKYC/VM.png"/>
-</p>
+- Node.js (v18 or higher)
+- npm (v8 or higher)
+- MongoDB (for user data storage)
+- Indy SDK dependencies
 
-You must have [Fabric samples](https://github.com/hyperledger/fabric-samples) to run this project. You will clone this project inside fabric-samples folder so as to this can use the files from bin and config folders.
-
-Here you can see the folder structure and the main files mentioned in this section:
+### Project Structure
 
 ```
-📦fabric-samples
- ┣ 📂bin
- ┣ 📂config
- ┗ 📂eKYC
-   ┣ 📂api
-   ┣ 📂chaincode
-   ┣ 📂frontend
-      ┗ 📂src
-         ┗ 📂service
-            ┗ 📜baseURL.json
-   ┣ 📂test-network
-   ┣ 📜.env
-   ┣ 📜networkDown.sh
-   ┗ 📜setUp.sh
+📦eKYC
+ ┣ 📂api
+   ┣ 📂controllers
+   ┣ 📂services
+      ┗ 📜indyIdentityService.js
+   ┣ 📂models
+   ┗ 📂utils
+ ┣ 📂frontend
+   ┗ 📂src
+      ┗ 📂service
+         ┗ 📜baseURL.json
+ ┣ 📂audits
+ ┣ 📜.env
+ ┗ 📜setUp.sh
 ```
 
-Open your terminal in the fabric-samples folder and clone the project.
+### Installation
+
+Clone the repository:
 
 ``` sh
 # Clone this repo
@@ -73,7 +74,8 @@ To run the application you will need to set your own configurations of _port_, _
 ``` json
 // ./.env
 
-PORT_API=5000
+PORT_API=15500
+PORT_FRONTEND=15501
 PRIVATE_KEY="54AD766F231CCB0EA64156F1E5488"
 ENCRYPTION_KEY="CoCKidLqlVuB8y1EYmKaye1UGoxtHmko1LmyqOHvVht="
 MONGODB_URI_DEV="YOUR_DEV_MONGO_URI"
@@ -81,22 +83,16 @@ MONGODB_URI_DEV="YOUR_DEV_MONGO_URI"
 
 Now you will need two opened terminals to run the project. One for the API and another one for the frontend.
 
-API will run on http://35.193.245.108:5000/
+API will run on http://10.1.1.184:15500/
 
-Frontend will run on http://35.193.245.108:3000/
+Frontend will run on http://10.1.1.184:15501/
 
 ``` sh
 
 ## In the first terminal ##
 
-# Go to the chaincode folder
-cd chaincode
-
-# Install dependencies
-npm install
-
 # Go to the API application
-cd ../api
+cd api
 
 # Install dependencies
 npm install
@@ -121,7 +117,7 @@ In order to connect frontend to the API, you will have to provide the base URL o
 cd src/service/baseURL.json
 
 {
-    "baseURL": "http://35.193.245.108:5000"
+    "baseURL": "http://10.1.1.184:15500"
 }
 ```
 
@@ -161,17 +157,7 @@ Finally run the frontend application:
 npm start
 ```
 
-If you want to stop the network and delete all artifacts created, just run the next magic script below:
-
-``` sh
-## In the first terminal ##
-
-# Go to the root
-cd ..
-
-# Run the script
-./networkDown.sh
-```
+To stop the application, simply terminate the running processes in both terminals using Ctrl+C.
 
 #### Login credentials
 
