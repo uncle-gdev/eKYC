@@ -7,9 +7,8 @@ This guide provides a comprehensive process for updating the outdated dependenci
 
 ### Critical Issues Identified:
 - **Frontend**: 153 vulnerabilities (16 critical, 64 high-severity)
-- **API**: Outdated packages from 2020 with known security issues
-- **Chaincode**: Very old dependencies from 2018-2020
-- **Node.js**: All components require Node >=8 (current LTS is 20+)
+- **API**: Outdated packages from 2020 with known security issues, now updated with Hyperledger Indy dependencies
+- **Node.js**: All components require Node >=18 (current LTS is 20+)
 
 ### Components Requiring Updates:
 
@@ -23,15 +22,13 @@ This guide provides a comprehensive process for updating the outdated dependenci
 #### 2. API (/api/)
 **Critical outdated packages:**
 - Express: 4.17.1 → Latest (4.x)
-- Mongoose: 5.9.21 → Latest (7.x) - **BREAKING CHANGES**
-- jsonwebtoken: 8.5.1 → Latest (9.x) - **SECURITY CRITICAL**
-- Node.js engine: >=8 → >=18 (LTS)
-
-#### 3. Chaincode (/chaincode/javascript/)
-**Critical outdated packages:**
-- eslint: 4.19.1 → Latest (8.x) - **MAJOR VERSION JUMP**
-- mocha: 5.2.0 → Latest (10.x)
-- fabric-contract-api: 2.0.0 → Check latest Hyperledger versions
+- Mongoose: Updated to 8.x for Indy integration
+- jsonwebtoken: Updated to 9.x - **SECURITY CRITICAL**
+- Node.js engine: >=18 (LTS)
+- **New Indy Dependencies:**
+  - @hyperledger/indy-vdr: ^0.2.0
+  - @hyperledger/aries-framework-core: ^0.5.0
+  - indy-sdk: ^1.16.0
 
 ## Dependency Renewal Process
 
@@ -45,9 +42,8 @@ git add -A && git commit -m "Backup before dependency updates"
 git checkout -b dependency-renewal
 
 # 3. Document current versions
-npm list --depth=0 > current-versions-frontend.txt 2>&1
+cd frontend && npm list --depth=0 > current-versions-frontend.txt 2>&1
 cd ../api && npm list --depth=0 > current-versions-api.txt 2>&1
-cd ../chaincode/javascript && npm list --depth=0 > current-versions-chaincode.txt 2>&1
 ```
 
 ### Phase 2: Node.js Version Update
