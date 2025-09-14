@@ -171,10 +171,12 @@ Financial Institution
 
 ## :book: Resources and technologies :computer:
 
-1. Chaincode
+1. Identity Management
 
-   - [Fabric samples](https://github.com/hyperledger/fabric-samples) - get started samples for Hyperledger Fabric
-   - [Fabric contract API](https://www.npmjs.com/package/fabric-contract-api) - contract interface to implement smart contracts
+   - [Hyperledger Indy](https://hyperledger-indy.readthedocs.io/) - decentralized identity blockchain framework
+   - [Indy SDK](https://github.com/hyperledger/indy-sdk) - SDK for building applications on Hyperledger Indy
+   - [Hyperledger Indy VDR](https://www.npmjs.com/package/@hyperledger/indy-vdr) - Verifiable Data Registry for Indy
+   - [Aries Framework](https://www.npmjs.com/package/@hyperledger/aries-framework-core) - framework for decentralized identity
    - [ESlint](https://eslint.org/) - pluggable JS linter
 
 2. API
@@ -182,13 +184,12 @@ Financial Institution
    - [Express.js](http://expressjs.com/) - web application framework
    - [MongoDB](https://www.mongodb.com/) - NoSQL database
    - [Mongoose](https://mongoosejs.com/) - object data modeling (ODM) library for MongoDB and Node.js
-   - [Async](https://caolan.github.io/async/v3/) - library to perform asynchronous operations
    - [Express validator](https://express-validator.github.io/docs/) - middleware to validate data
    - [Bcryptjs](https://www.npmjs.com/package/bcryptjs) - library to perform cryptography
    - [JWT. IO](https://jwt.io/) - JSON Web Tokens to allow, decode, verify and generate JWT
    - [Dotenv](https://www.npmjs.com/package/dotenv) - loads environment variables from a .env file
-   - [Fabric CA Client](https://www.npmjs.com/package/fabric-ca-client) - SDK for Node.js to interact with HLF CA
-   - [Fabric Network](https://www.npmjs.com/package/fabric-network) - SDK for Node.js to interact with HLF
+   - [Cookie Parser](https://www.npmjs.com/package/cookie-parser) - cookie parsing middleware
+   - [CORS](https://www.npmjs.com/package/cors) - cross-origin resource sharing
 
 3. Frontend
 
