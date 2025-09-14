@@ -3,8 +3,8 @@
     "version": "1.0.0",
     "description": "eKYC application implemented in JavaScript",
     "engines": {
-        "node": ">=8",
-        "npm": ">=5"
+        "node": ">=18",
+        "npm": ">=8"
     },
     "scripts": {
         "lint": "eslint .",
